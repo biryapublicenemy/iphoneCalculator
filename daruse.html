@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="calculator.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+<!--                         CALCULATOR                           -->
+<input type="text" class="input-box" id="input" onkeydown="return checkInputBoxKey(event.key)">
+<br>
+<button type="button" class="digit-function" id="clear">C</button>
+<button type="button" class="digit-function" id="clear">&plusmn;</button>
+<button type="button" class="digit-function" id="clear">%</button>
+<button type="button" class="digit-operator" id="divide">&#247;</button>
+<br>
+<button type="button" class="digit-number" id="seven"value="7">7</button>
+<button type="button" class="digit-number" id="eight"value="8">8</button>
+<button type="button" class="digit-number" id="nine"value="9">9</button>
+<button type="button" class="digit-operator" id="multiply">&#215;</button>
+<br>
+<button type="button" class="digit-number" id="four"value="4">4</button>
+<button type="button" class="digit-number" id="five"value="5">5</button>
+<button type="button" class="digit-number" id="six"value="6">6</button>
+<button type="button" class="digit-operator" id="substract">-</button>
+<br>
+<button type="button" class="digit-number" id="one" value="1">1</button>
+<button type="button" class="digit-number" id="two" value="2">2</button>
+<button type="button" class="digit-number" id="three"value="3">3</button>
+<button type="button" class="digit-operator" id="sum">+</button>
+<br>  
+<button type="button" class="digit-number-zero" id="zero" value="0">&nbsp;&nbsp;0</button>
+<button type="button" class="digit-number" id="comma">,</button>
+<button type="button" class="digit-operator" id="resultBtn">=</button>
+<script type="text/javascript">
+
+///настройка инпута только на цифры///
+function checkInputBoxKey(key) {
+  return (key >= '0' && key <= '9') || key == '+' || key == '(' || key == ')' || key == '-' ||
+    key == 'ArrowLeft' || key == 'ArrowRight' || key == 'Delete' || key == 'Backspace';
+}
+////////////////////////////////////////
+
+///настройка инпута на автоввод при load/////
+window.addEventListener('load', function() {  var input = document.getElementById('input');  input.focus();});
+//////Инициализация кнопок//////////////
+
+const zero = document.getElementById('zero');
+zero.onclick = () => (document.getElementById('input').value += zero.value);  
+
+const one = document.getElementById('one');
+one.onclick = () => (document.getElementById('input').value += one.value);  
+
+const two = document.getElementById('two');
+two.onclick = () => (document.getElementById('input').value += two.value);  
+
+const three = document.getElementById('three');
+three.onclick = () => (document.getElementById('input').value += three.value);  
+
+const four = document.getElementById('four');
+four.onclick = () => (document.getElementById('input').value += four.value);  
+
+const five = document.getElementById('five');
+five.onclick = () => (document.getElementById('input').value += five.value);  
+
+const six = document.getElementById('six');
+six.onclick = () => (document.getElementById('input').value += six.value);  
+
+const seven = document.getElementById('seven');
+seven.onclick = () => (document.getElementById('input').value += seven.value);  
+
+const eight = document.getElementById('eight');
+eight.onclick = () => (document.getElementById('input').value += eight.value);  
+
+const nine = document.getElementById('nine');
+nine.onclick = () => (document.getElementById('input').value += nine.value);  
+
+
+const resultBtn = document.getElementById('resultBtn');
+const clear = document.getElementById('clear');
+const multiply = document.getElementById('multiply');
+const divide = document.getElementById('divide');
+const sum = document.getElementById('sum');
+const substact = document.getElementById('substract');
+
+//////Инициализация кнопок//////////////
+
+/////Блок кода, который принимает первое число из инпута и делает его цифрой, за тем берет второе и жестко ебурит их//////////////////////
+let firstQuantity = null;
+let secondQuantity = null;
+
+function slicer (){
+    console.log(input.value + ' - input'); 
+    let index = text.indexOf(symbol);
+    console.log(index);
+    if (index !== -1) {
+        var sliced = text.slice(index + 1);
+        console.log(sliced + ' - sliced');
+        return sliced;
+    }        else {
+        return text;
+    }
+}
+
+sum.onclick = function () {
+    firstQuantity = Number(input.value);
+    input.value = firstQuantity + '+';
+    console.log(firstQuantity);
+    console.log(secondQuantity);
+    resultBtn.onclick = function () {
+        text = input.value;
+        symbol='+';
+        sliced =  slicer(text, symbol);
+        console.log(sliced);
+        secondQuantity = Number(sliced);
+        console.log(secondQuantity + ' - secondQuantity');
+        input.value = firstQuantity + '+' + secondQuantity;
+        result = firstQuantity+secondQuantity;
+        input.value = result;
+        
+    }
+}
+substract.onclick = function () {
+    firstQuantity = Number(input.value);
+    input.value = firstQuantity + '-';
+    console.log(firstQuantity);
+    console.log(secondQuantity);
+    resultBtn.onclick = function () {
+        text = input.value;
+        symbol='-';
+        sliced =  slicer(text, symbol);
+        secondQuantity = Number(sliced);
+        console.log(secondQuantity);
+        result = firstQuantity-secondQuantity  ;
+        input.value = result;
+        
+    }
+}
+
+multiply.onclick = function () {
+    firstQuantity = Number(input.value);
+    input.value = firstQuantity + '*' ;
+    console.log(firstQuantity);
+    console.log(secondQuantity);
+    resultBtn.onclick = function () {
+        text = input.value;
+        symbol='*';
+        sliced =  slicer(text, symbol);
+        secondQuantity = Number(sliced);
+        console.log(secondQuantity);
+        result = secondQuantity * firstQuantity;
+        input.value = result;
+        
+    }
+}
+
+divide.onclick = function () {
+    firstQuantity = Number(input.value);
+    input.value = firstQuantity + '/' ;
+    console.log(firstQuantity);
+    console.log(secondQuantity);
+    resultBtn.onclick = function () { 
+        text = input.value;
+        symbol='/';
+        sliced =  slicer(text, symbol);
+        secondQuantity = Number(sliced);
+        console.log(secondQuantity);
+        result = firstQuantity / secondQuantity;
+        input.value = result;
+        
+    }
+}
+
+clear.onclick = function () {
+    input.value = '';
+    var firstQuantity = null;
+    var secondQuantity = null;
+    var result = null;
+ }// 1)добавить точку!
+ //  2)стили БУРЕК ПОЧТИ ПОБЕДИЛ!!!!
+//   3) бесконечное количество операций   
+//   4) следующий клик после резалта опусташает инпут и присваивает знаения клика
+//   5) БУУРЕЕЕК НАЧАЛ  привязать клики к кнопкам клавиатуры И запретить ввод текста в инпут и сделать невозможным выход из инпута (перманетный инпут) 
+//   6) при нажатии на операции в первую очередь(без цифры) - ничего не происходит
+//   7) вывести это на сайт BirBer.ru
+//   8) перевод в проценты и отрицательные числа.
+//   88) развитие в сторону инженерного калькулятора
+</script>
+</body>
+</html>
+
