@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <input type="text" class="input-box" id="input" onkeydown="return checkInputBoxKey(event.key)">
+    <br>
+    <button type="button" class="digit-function" id="clear">C</button>
+    <button type="button" class="digit-function" id="clear">&plusmn;</button>
+    <button type="button" class="digit-function" id="clear">%</button>
+    <button type="button" class="digit-operator" id="divide">&#247;</button>
+    <br>
+    <button type="button" class="digit-number" id="seven" value="7">7</button>
+    <button type="button" class="digit-number" id="eight" value="8">8</button>
+    <button type="button" class="digit-number" id="nine" value="9">9</button>
+    <button type="button" class="digit-operator" id="multiply">&#215;</button>
+    <br>
+    <button type="button" class="digit-number" id="four" value="4">4</button>
+    <button type="button" class="digit-number" id="five" value="5">5</button>
+    <button type="button" class="digit-number" id="six" value="6">6</button>
+    <button type="button" class="digit-operator" id="substract">-</button>
+    <br>
+    <button type="button" class="digit-number" id="one" value="1">1</button>
+    <button type="button" class="digit-number" id="two" value="2">2</button>
+    <button type="button" class="digit-number" id="three" value="3">3</button>
+    <button type="button" class="digit-operator" id="sum">+</button>
+    <br>
+    <button type="button" class="digit-number-zero" id="zero" value="0">&nbsp;&nbsp;0</button>
+    <button type="button" class="digit-number" id="comma">,</button>
+    <button type="button" class="digit-operator" id="resultBtn">=</button>
+
+
+    <script type="text/javascript" src="./index.js"></script>
+</body>
+
+</html>
