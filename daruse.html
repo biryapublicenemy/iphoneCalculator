@@ -94,37 +94,124 @@ const substact = document.getElementById('substract');
 let firstQuantity = null;
 let secondQuantity = null;
 
+
+function twinPush(symbol) {
+    
+}
+
+function twinProcess(firstQuantity, symbol) {
+    console.log(firstQuantity + ' - вход в функцию firstQuantity')
+    text = input.value;
+   
+    var secondQuantity = null;// чистим операнды
+
+    sliced =  slicer(text, symbol);
+    secondQuantity = Number(sliced); //задаем второй операнд
+    console.log(secondQuantity + ' - secondQuantity')
+
+    switch (symbol) { // считаем промежуточное значение
+        case '+':
+        result = firstQuantity+secondQuantity;
+            break;
+        case '-':
+        result = firstQuantity-secondQuantity;
+            break;
+        case '*':
+        result = firstQuantity*secondQuantity;
+            break;
+        case '/':
+        result = firstQuantity/secondQuantity;
+            break;
+        default:
+            alert('GFYS')
+            break;
+    }
+
+
+    // var firstQuantity = null; //чистим операнды
+    console.log(firstQuantity + ' - firstQuantity ' + secondQuantity + ' - secondQuantity ' + result + ' - result')
+    firstQuantity = result;  //задаем первый операнд
+
+    input.value = result; + symbol; // Убрать символ но сделать чтобы работало
+    return (firstQuantity)
+
+
+//     switch (symbol) {
+//         case '+':
+//         result = firstQuantity+secondQuantity;
+//             break;
+//         case '-':
+//         result = firstQuantity-secondQuantity;
+//             break;
+//         case '*':
+//         result = firstQuantity*secondQuantity;
+//             break;
+//         case '/':
+//         result = firstQuantity/secondQuantity;
+//             break;
+//         default:
+//             alert('GFYS')
+//             break;
+//     }
+//     input.value = result + symbol // промежуточное значение
+//     console.log(secondQuantity + ' - SQ');
+//     console.log(result + ' - result')
+  
+}
+
+sum.onclick = function () {
+    symbol='+'
+
+    if (firstQuantity != null) {
+
+    firstQuantity = twinProcess(firstQuantity, symbol);
+
+    console.log();
+
+
+    } else {
+
+        firstQuantity = Number(input.value);
+        input.value = firstQuantity + '+';
+        console.log(firstQuantity + ' - первое значение firstQuantity');
+        // console.log(secondQuantity);
+
+        resultBtn.onclick = function () {
+            text = input.value;
+            symbol='+';
+            sliced =  slicer(text, symbol);
+            console.log(sliced);
+            secondQuantity = Number(sliced);
+            console.log(secondQuantity + ' - secondQuantity');
+            input.value = firstQuantity + '+' + secondQuantity;
+            result = firstQuantity+secondQuantity;
+            input.value = result;
+        }
+    }
+}
+
+
+
+
 function slicer (){
-    console.log(input.value + ' - input'); 
+    // console.log(input.value + ' - input'); 
     let index = text.indexOf(symbol);
-    console.log(index);
+    // console.log(index);
     if (index !== -1) {
         var sliced = text.slice(index + 1);
-        console.log(sliced + ' - sliced');
+        // console.log(sliced + ' - sliced');
         return sliced;
     }        else {
         return text;
     }
 }
 
-sum.onclick = function () {
-    firstQuantity = Number(input.value);
-    input.value = firstQuantity + '+';
-    console.log(firstQuantity);
-    console.log(secondQuantity);
-    resultBtn.onclick = function () {
-        text = input.value;
-        symbol='+';
-        sliced =  slicer(text, symbol);
-        console.log(sliced);
-        secondQuantity = Number(sliced);
-        console.log(secondQuantity + ' - secondQuantity');
-        input.value = firstQuantity + '+' + secondQuantity;
-        result = firstQuantity+secondQuantity;
-        input.value = result;
+
+
+
+
         
-    }
-}
+
 substract.onclick = function () {
     firstQuantity = Number(input.value);
     input.value = firstQuantity + '-';
