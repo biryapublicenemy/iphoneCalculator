@@ -95,9 +95,6 @@ let firstQuantity = null;
 let secondQuantity = null;
 
 
-function twinPush(symbol) {
-    
-}
 
 function twinProcess(firstQuantity, symbol) {
     console.log(firstQuantity + ' - вход в функцию firstQuantity')
@@ -126,7 +123,6 @@ function twinProcess(firstQuantity, symbol) {
             alert('GFYS')
             break;
     }
-
 
     // var firstQuantity = null; //чистим операнды
     console.log(firstQuantity + ' - firstQuantity ' + secondQuantity + ' - secondQuantity ' + result + ' - result')
@@ -264,11 +260,15 @@ divide.onclick = function () {
 }
 
 clear.onclick = function () {
+
     input.value = '';
     var firstQuantity = null;
     var secondQuantity = null;
     var result = null;
- }// 1)добавить точку!
+ }
+ 
+ 
+ // 1)добавить точку!
  //  2)стили БУРЕК ПОЧТИ ПОБЕДИЛ!!!!
 //   3) бесконечное количество операций   
 //   4) следующий клик после резалта опусташает инпут и присваивает знаения клика
