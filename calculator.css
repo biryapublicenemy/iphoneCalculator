@@ -36,8 +36,24 @@ button{
 .digit-number{
     background-color: rgb(92, 92, 92);
     color: rgb(255, 255, 255);
-
+    transition: background-color 1s;
 }
+.digit-number.clicked{ 
+    animation: colorAnimation 1.5s alternate ; 
+}
+@keyframes colorAnimation {
+    from {
+      background-color: rgb(182, 182, 182);
+    }
+    to {
+      background-color: rgb(92, 92, 92);
+    }
+    /* from {background-color: lightgray;
+    }
+    to{background-color:  rgb(92, 92, 92);
+    } */
+
+  }
 .digit-operator{
     background-color: rgb(255,159,11) ;
     color: rgb(255,255,255);
