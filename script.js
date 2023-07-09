@@ -1,23 +1,82 @@
+let firstQuantity = null;
+let secondQuantity = null;
 //////Инициализация кнопок//////////////
-console.log('sdad')
+
+/* const two = document.getElementById("two");// вот так работает но мне не нравится что нет унификации
+ two.onclick = ( firstQuantity) => {
+   if (firstQuantity || secondQuantity ) 
+     {
+       console.log(firstQuantity+ '   ' +secondQuantity);
+       input.value = null;
+      input.value += two.value;
+     } else {
+      input.value += two.value;
+       console.log(firstQuantity+ ' das  ' +secondQuantity);
+     }
+     return (input.value);
+   };*/
+
+   function microFunction( element, firstQuantity ) 
+   {
+     if (firstQuantity!=null || secondQuantity ) 
+     {
+       console.log(firstQuantity+ '   ' +secondQuantity);
+       input.value = null;
+       input.value += element.value;
+     } else {
+       input.value += element.value;
+       console.log(firstQuantity+ ' das  ' +secondQuantity);
+     }
+     return (input.value);
+   }
+
+//156
+
 const zero = document.getElementById("zero");
 console.log(zero);
-zero.onclick = () => (input.value += zero.value);
-
-const one = document.getElementById("one");
-one.onclick = () => (input.value += one.value);
+zero.onclick = (firstQuantity) => {
+  microFunction(zero, firstQuantity )
+  return (input.value);
+};
+  
+  const one = document.getElementById("one");
+  one.onclick = (firstQuantity) => {
+    microFunction(one, firstQuantity )
+    return (input.value);
+  };
+  
 
 const two = document.getElementById("two");
-two.onclick = () => (input.value += two.value);
+two.onclick = ( firstQuantity) => {
+  microFunction(two, firstQuantity )
+  return (input.value);
+  };
+
+
+
+
+
+
 
 const three = document.getElementById("three");
-three.onclick = () => (input.value += three.value);
+three.onclick = (firstQuantity) => {
+  microFunction(three, firstQuantity )
+  return (input.value);
+};
 
 const four = document.getElementById("four");
-four.onclick = () => (input.value += four.value);
-
+four.onclick = (firstQuantity) => {
+  //input.value += four.value);
+  microFunction(four, firstQuantity )
+  return (input.value);
+}
 const five = document.getElementById("five");
-five.onclick = () => (input.value += five.value);
+five.onclick = (firstQuantity) => {
+  //input.value += five.value
+  microFunction(five, firstQuantity )
+  return (input.value);
+  
+};// дальше не перерабатывал
 
 const six = document.getElementById("six");
 six.onclick = () => (input.value += six.value);
@@ -90,26 +149,44 @@ function checkInputBoxKey(key) {
     });
     
     /////Блок кода, который принимает первое число из инпута и делает его цифрой, за тем берет второе и жестко ебурит их//////////////////////
-    let firstQuantity = null;
-    let secondQuantity = null;
     
     //////// Инверсия цвета в кнопках операторах\\\\\\\
     function buttonSwapColors() {
-      console.log(this);
+      //console.log(this); // переменная котзорая обозначает родительский класс
       let textInputColor =window.getComputedStyle(this).getPropertyValue("color");
       let backInputColor =window.getComputedStyle(this).getPropertyValue("background-color");
-      console.log(textInputColor);
-      console.log(backInputColor);
+      //console.log(textInputColor);
+      //console.log(backInputColor);
       this.style.color = backInputColor;
       this.style.backgroundColor = textInputColor;
     }
     ////на каждый клик
-    sum.onclick = function () {
+    sum.onclick = function (firstQuantity, secondQuantity, result) {
       buttonSwapColors.call(this);
-      firstQuantity = Number(input.value);
-      console.log(firstQuantity);
-      input.value = firstQuantity;
-      input.value = null;
+
+      if (result) { // проверка если нажатие не первый раз
+        firstQuantity = result;
+      } else {
+        firstQuantity = Number(input.value);
+        console.log('143я строчка')
+      }
+      console.log(firstQuantity + ' - fQ ');
+      
+      sum.onclick = function () {
+        if (result) {
+          firstQuantity = result;
+        } else {}
+        buttonSwapColors.call(this);
+        secondQuantity = Number(input.value);
+        result = firstQuantity + secondQuantity;
+        input.value = result;
+        // secondQuantity = null;
+        // firstQuantity = null;
+        console.log(firstQuantity+' - fQ ' , secondQuantity+ ' - sQ ', result+' - result ПОСЛЕ ');
+        return (firstQuantity, secondQuantity, result)
+      };
+
+
       resultBtn.onclick = function () {
         buttonSwapColors.call(sum);
         secondQuantity = Number(input.value);
@@ -118,6 +195,8 @@ function checkInputBoxKey(key) {
         input.value = result;
       };
     };
+
+
     substract.onclick = function () {
       buttonSwapColors.call(this);
       firstQuantity = Number(input.value);
@@ -172,3 +251,5 @@ clear.onclick = function () {
 //   7) вывести это на сайт BirBer.ru
 //   8) перевод в проценты и отрицательные числа.
 //   88) развитие в сторону инженерного калькулятора
+
+// надо сделать чтобы при клацании кнопки после того как нажат плюс инпут очищался только при нажатии новой цифры
