@@ -30,7 +30,7 @@ let secondQuantity = null;
      return (input.value);
    }
 
-
+//156
 
 const zero = document.getElementById("zero");
 console.log(zero);
